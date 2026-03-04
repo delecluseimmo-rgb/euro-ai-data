@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "dataset": "euromillions_draws",
+  "game": "euromillions",
+  "version": 1,
+  "updatedAt": "2026-03-04T02:45:40Z",
+  "drawCount": 1925,
+  "latestDrawDate": "2026-03-03",
+  "nextExpectedDraw": "2026-03-06",
+  "drawSchedule": {
+    "timezone": "Europe/Paris",
+    "daysOfWeek": [
+      2,
+      5
+    ],
+    "timeLocal": "21:00"
+  },
+  "drawPatternDays": [
+    3,
+    4
+  ],
+  "dataFile": "draws_v001.json",
+  "sha256": "4a8f3be7dc3d4004a061ea501f9e1f746442b63cda62f5af16a48f8840da45a3",
+  "sourceFile": "draws_simplified.csv",
+  "columns": [
+    "DRAW_ID",
+    "DRAW_DATE",
+    "N1",
+    "N2",
+    "N3",
+    "N4",
+    "N5",
+    "S1",
+    "S2",
+    "JACKPOT"
+  ]
+}
