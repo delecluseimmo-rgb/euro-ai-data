@@ -21,7 +21,7 @@
   ],
   "dataFile": "draws_v002.json",
   "sha256": "13431ba8dff9994fdc027d85cbbea22f1d675f2bd0d5effaecb69ea39c566c95",
-  "sourceFile": "draws_simplified.csv",
+  "sourceFile": "draws_simplified.csv (tirages 1-1925) + releves FDJ (tirages 1926-1966)",
   "columns": [
     "DRAW_ID",
     "DRAW_DATE",
