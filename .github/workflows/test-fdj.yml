@@ -1,0 +1,19 @@
+name: Test acces FDJ
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Appel de la page resultat
+        run: |
+          URL="https://www.fdj.fr/jeux-de-tirage/euromillions-my-million/resultats/mardi-28-juillet-2026"
+          code=$(curl -s -o page.html -w "%{http_code}" "$URL")
+          echo "Code HTTP : $code"
+          echo "Taille recue : $(wc -c < page.html) octets"
+          echo "--- donnees attendues ---"
+          grep -q "GA 472 5470"   page.html && echo "code My Million : TROUVE"   || echo "code My Million : ABSENT"
+          grep -q "89 millions"   page.html && echo "cagnotte suivante : TROUVEE" || echo "cagnotte suivante : ABSENTE"
+          grep -q "restricted"    page.html && echo ">>> PAGE ANTI-ROBOT DETECTEE"
