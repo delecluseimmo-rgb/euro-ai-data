@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "dataset": "euromillions_draws",
   "game": "euromillions",
-  "version": 2,
-  "updatedAt": "2026-07-28T11:40:25Z",
+  "version": 3,
+  "updatedAt": "2026-07-28T13:33:41Z",
   "drawCount": 1966,
   "latestDrawDate": "2026-07-24",
   "nextExpectedDraw": "2026-07-28",
@@ -19,8 +19,8 @@
     3,
     4
   ],
-  "dataFile": "draws_v002.json",
-  "sha256": "13431ba8dff9994fdc027d85cbbea22f1d675f2bd0d5effaecb69ea39c566c95",
+  "dataFile": "draws_v003.json",
+  "sha256": "7c98c83f6e09e0e021b56cb05bd1b058be8601927756f2882f34b228b6553c16",
   "sourceFile": "draws_simplified.csv (tirages 1-1925) + releves FDJ (tirages 1926-1966)",
   "columns": [
     "DRAW_ID",
