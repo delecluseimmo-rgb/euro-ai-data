@@ -1,0 +1,55 @@
+name: Maj tirage EuroMillions
+
+on:
+  # Tirage a 21h00 Paris, page publiee vers 21h45.
+  # Les heures cron sont en UTC : Paris est a UTC+2 l'ete, UTC+1 l'hiver.
+  # On tente plusieurs fois — le script est idempotent, une execution
+  # inutile ne coute rien et ne modifie rien.
+  schedule:
+    - cron: "0,30 20,21,22 * * 2,5"   # mardi et vendredi
+  # Declenchement manuel, avec date facultative (AAAA-MM-JJ)
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Date du tirage a recuperer (vide = le dernier passe)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: maj-tirage
+  cancel-in-progress: false
+
+jobs:
+  maj:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Recuperation du tirage
+        run: python3 maj_tirage.py ${{ github.event.inputs.date }}
+
+      - name: Commit et push
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "aucun changement — rien a publier"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "data: tirage du $(python3 -c "import json;print(json.load(open('latest.json'))['latestDrawDate'])")"
+          git push
+          echo "### Tirage publie" >> $GITHUB_STEP_SUMMARY
+          python3 -c "
+          import json
+          m = json.load(open('latest.json'))
+          d = json.load(open(m['dataFile']))
+          r = d['rows'][0]
+          print(f\"- Tirage : {m['latestDrawDate']}\")
+          print(f\"- Numeros : {r[2:7]}  Etoiles : {r[7:9]}\")
+          print(f\"- Version : {m['version']}  ({m['drawCount']} tirages)\")
+          print(f\"- Prochaine cagnotte : {m['nextJackpot']:,} EUR\".replace(',', ' '))
+          " >> $GITHUB_STEP_SUMMARY
