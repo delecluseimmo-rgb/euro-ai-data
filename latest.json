@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "dataset": "euromillions_draws",
   "game": "euromillions",
-  "version": 7,
-  "updatedAt": "2026-08-07T20:39:55Z",
-  "drawCount": 1970,
-  "latestDrawDate": "2026-08-07",
-  "nextExpectedDraw": "2026-08-11",
+  "version": 8,
+  "updatedAt": "2026-08-11T20:42:30Z",
+  "drawCount": 1971,
+  "latestDrawDate": "2026-08-11",
+  "nextExpectedDraw": "2026-08-14",
   "drawSchedule": {
     "timezone": "Europe/Paris",
     "daysOfWeek": [
@@ -19,8 +19,8 @@
     3,
     4
   ],
-  "dataFile": "draws_v007.json",
-  "sha256": "c9e5ec9954abf7172414e486d9bdd45e7b766b9dfd412fb33921a447ed5109a8",
+  "dataFile": "draws_v008.json",
+  "sha256": "779b44a89671c9ed15fc4d79b57fbaf96706a97219b1b9bc7fdb47f8c4b1fef0",
   "sourceFile": "draws_simplified.csv",
   "columns": [
     "DRAW_ID",
@@ -34,5 +34,5 @@
     "S2",
     "JACKPOT"
   ],
-  "nextJackpot": 17000000
+  "nextJackpot": 28000000
 }
